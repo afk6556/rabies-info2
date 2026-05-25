@@ -3,109 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бешенство: что нужно знать</title>
+    <title>Бешенство: полный гид по защите</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #fdf6f0; color: #2c1810; line-height: 1.7; padding: 20px; }
-        .container { max-width: 750px; margin: 0 auto; background: #fff; border-radius: 20px; padding: 30px 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); }
-        h1 { font-size: 2.2em; color: #b64516; border-left: 6px solid #e67e22; padding-left: 18px; margin-bottom: 12px; }
-        .subtitle { color: #7f5539; font-size: 1.1em; margin-bottom: 30px; font-style: italic; }
-        h2 { color: #9c4221; margin: 35px 0 12px; font-size: 1.5em; border-bottom: 2px dashed #f0c8a0; padding-bottom: 6px; }
-        .danger-box { background: #fff3e6; border: 2px solid #e67e22; border-radius: 14px; padding: 20px; margin: 25px 0; }
-        .danger-box h3 { color: #b64516; margin-bottom: 10px; }
-        .step { background: #fff8f2; border-radius: 12px; padding: 18px; margin: 12px 0; border: 1px solid #f0c8a0; }
-        .step-number { display: inline-block; background: #e67e22; color: #fff; width: 32px; height: 32px; text-align: center; line-height: 32px; border-radius: 50%; font-weight: bold; margin-right: 10px; }
-        .animals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
-        .animal-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.07); text-align: center; transition: transform 0.2s; }
-        .animal-card:hover { transform: translateY(-4px); }
-        .animal-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 3px solid #e67e22; }
-        .animal-card .caption { padding: 12px; font-weight: 600; color: #5c3a21; }
-        .warning-signs { color: #b64516; font-size: 0.9em; margin-top: 6px; }
-        .soap-highlight { background: #fdebd0; padding: 4px 8px; border-radius: 6px; font-weight: bold; }
-        .no-do { color: #c0392b; }
-        ul { margin: 12px 0 12px 25px; }
-        li { margin-bottom: 8px; }
-        .footer-note { margin-top: 35px; padding-top: 20px; border-top: 2px solid #f0c8a0; font-size: 0.95em; color: #7f5539; }
-        @media (max-width: 500px) {
-            .container { padding: 20px 15px; }
-            h1 { font-size: 1.6em; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            /* Новый фон: глубокий градиент с едва заметным медицинским узором */
+            background-color: #f4ede4;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(220, 190, 160, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(200, 160, 120, 0.2) 0%, transparent 50%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 0h4v28h28v4H32v28h-4V32H0v-4h28V0z' fill='%23b64516' fill-opacity='0.03'/%3E%3C/svg%3E");
+            background-size: auto, auto, 60px 60px;
+            color: #2c1a0e;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+            animation: bodyFadeIn 0.8s ease;
+        }
+
+        @keyframes bodyFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 35px 30px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.04);
+            animation: slideUpContainer 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        @keyframes slideUpContainer {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Заголовок и подзаголовок с уменьшенным отступом */
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #b64516, #e67e22);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-left: 7px solid #e67e22;
+            padding-left: 22px;
+            margin-bottom: 8px; /* Уменьшил отступ снизу */
+            animation: fadeInLeft 0.6s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .subtitle {
+            color: #7f5539;
+            font-size: 1.15em;
+            margin-top: 0;   /* Убрал возможный верхний отступ */
+            margin-bottom: 30px;
+            font-style: italic;
+            animation: fadeInLeft 0.8s ease;
+        }
+
+        h2 {
+            color: #9c4221;
+            margin: 40px 0 15px;
+            font-size: 1.7em;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 8px;
+            animation: fadeInLeft 0.5s ease;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #e67e22, #ffc489);
+            border-radius: 4px;
+        }
+
+        h3 {
+            color: #b64516;
+            margin: 25px 0 12px;
+            animation: fadeInLeft 0.5s ease;
+        }
+
+        h4 {
+            color: #7f5539;
+            margin: 18px 0 10px;
+            animation: fadeInLeft 0.5s ease;
+        }
+
+        /* Сетка животных */
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .animal-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            animation: zoomInCard 0.5s ease both;
+        }
+
+        .animal-card:nth-child(1) { animation-delay: 0.05s; }
+        .animal-card:nth-child(2) { animation-delay: 0.15s; }
+        .animal-card:nth-child(3) { animation-delay: 0.25s; }
+        .animal-card:nth-child(4) { animation-delay: 0.35s; }
+        .animal-card:nth-child(5) { animation-delay: 0.45s; }
+        .animal-card:nth-child(6) { animation-delay: 0.55s; }
+
+        @keyframes zoomInCard {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .animal-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 22px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .animal-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid #e67e22;
+            transition: transform 0.4s ease;
+        }
+
+        .animal-card:hover img {
+            transform: scale(1.06);
+        }
+
+        .animal-card .caption {
+            padding: 14px 10px;
+            font-weight: 600;
+            color: #5c3a21;
+        }
+
+        .warning-signs {
+            color: #b64516;
+            font-size: 0.9em;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+
+        /* Блок опасности */
+        .danger-box {
+            background: linear-gradient(115deg, #fff3e6, #ffe8d6);
+            border: 2px solid #e67e22;
+            border-radius: 20px;
+            padding: 22px 20px;
+            margin: 25px 0;
+            box-shadow: 0 8px 18px rgba(230, 126, 34, 0.12);
+            animation: pulseShadow 2.5s infinite;
+        }
+
+        @keyframes pulseShadow {
+            0% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.3); }
+            70% { box-shadow: 0 0 0 12px rgba(230, 126, 34, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
+        }
+
+        .danger-box h3 {
+            color: #b64516;
+            margin-bottom: 12px;
+        }
+
+        /* Шаги */
+        .step {
+            background: #fff8f2;
+            border-radius: 14px;
+            padding: 18px;
+            margin: 14px 0;
+            border: 1px solid #f0c8a0;
+            transition: all 0.3s ease;
+            animation: fadeInLeft 0.5s ease both;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+        .step:nth-child(4) { animation-delay: 0.4s; }
+        .step:nth-child(5) { animation-delay: 0.5s; }
+
+        .step:hover {
+            background: #fef5e7;
+            border-color: #e67e22;
+            transform: translateX(8px);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: #fff;
+            width: 34px;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+            box-shadow: 0 6px 12px rgba(230, 126, 34, 0.3);
+        }
+
+        .soap-highlight {
+            background: linear-gradient(120deg, #fdebd0, #fad7a0);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .no-do {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        /* Карточки клиник – улучшенные */
+        .clinic-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 22px 20px;
+            margin: 18px 0;
+            border: 1px solid #f0c8a0;
+            box-shadow: 0 6px 16px rgba(230, 126, 34, 0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.5s ease both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .clinic-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(180deg, #e67e22, #ffb347);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .clinic-card .icon {
+            font-size: 2.4em;
+            background: #fff3e6;
+            border-radius: 14px;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .clinic-card .info {
+            flex: 1;
+        }
+
+        .clinic-card:nth-child(1) { animation-delay: 0.1s; }
+        .clinic-card:nth-child(2) { animation-delay: 0.2s; }
+        .clinic-card:nth-child(3) { animation-delay: 0.3s; }
+        .clinic-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .clinic-card:hover {
+            background: #fffaf5;
+            border-color: #e67e22;
+            box-shadow: 0 14px 24px rgba(230, 126, 34, 0.12);
+            transform: translateY(-5px);
+        }
+
+        .clinic-card strong {
+            display: block;
+            font-size: 1.15em;
+            margin-bottom: 5px;
+            color: #5c3a21;
+        }
+
+        /* Карта */
+        #map {
+            border-radius: 20px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s;
+        }
+
+        #map:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Подвал */
+        .footer-note {
+            margin-top: 40px;
+            padding-top: 22px;
+            border-top: 2px solid #f0c8a0;
+            font-size: 0.95em;
+            color: #7f5539;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 550px) {
+            .container { padding: 20px 18px; }
+            h1 { font-size: 1.8em; }
+            .clinic-card { flex-direction: column; }
+            .clinic-card .icon { margin-bottom: 8px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Бешенство</h1>
-        <p class="subtitle">Гид по заболеванию: что это, кто переносит и что делать после укуса</p>
+        <h1>🦠 Бешенство</h1>
+        <p class="subtitle">Полный гид: что это, переносчики, первая помощь и что делать в Таганроге</p>
 
-        <!-- ЧТО ТАКОЕ БЕШЕНСТВО -->
+        <!-- Что такое бешенство -->
         <h2>📌 Что такое бешенство?</h2>
-        <p>Бешенство — это <strong>смертельное вирусное заболевание</strong>, поражающее центральную нервную систему. Передаётся через слюну заражённого животного, чаще всего при укусе или ослюнении повреждённой кожи.</p>
-        <p>После появления симптомов болезнь <strong>практически неизлечима</strong>. Единственный способ выжить — вовремя начать вакцинацию после контакта.</p>
+        <p>Бешенство — <strong>смертельное вирусное заболевание</strong>, поражающее центральную нервную систему. Передаётся через слюну заражённого животного, чаще при укусе или ослюнении повреждённой кожи. После появления симптомов летальность почти 100%. Единственный шанс — своевременная вакцинация после контакта.</p>
 
-        <!-- СПОСОБЫ ПЕРЕДАЧИ -->
+        <!-- Способы передачи -->
         <h2>🦠 Способы передачи</h2>
         <ul>
             <li><strong>Укус</strong> заражённого животного (основной путь).</li>
-            <li><strong>Ослюнение</strong> — попадание слюны больного животного на слизистые оболочки (глаза, рот, нос) или на повреждённую кожу (царапины, ссадины).</li>
+            <li><strong>Ослюнение</strong> — попадание слюны на слизистые (глаза, рот) или на повреждённую кожу (ссадины, царапины).</li>
             <li><strong>Царапины</strong> от когтей, загрязнённых слюной (реже).</li>
-            <li>Воздушно-капельным или контактно-бытовым путём <strong>не передаётся</strong>.</li>
+            <li>Воздушно-капельным или бытовым путём <strong>не передаётся</strong>.</li>
         </ul>
 
-        <!-- ПЕРЕНОСЧИКИ И ФОТО -->
+        <!-- Переносчики и фото -->
         <h2>🐾 Основные переносчики</h2>
-        <p>Бешенство могут переносить любые теплокровные животные, но чаще всего источником заражения становятся:</p>
-       <div class="animals-grid">
-    <div class="animal-card">
-        <img src="images/fox.jpg" alt="Лиса">
-        <div class="caption">Лиса 🦊<br><span class="warning-signs">При бешенстве: слюнотечение, потеря страха, агрессия</span></div>
-    </div>
-    <div class="animal-card">
-        <img src="images/raccoon.jpg" alt="Енот">
-        <div class="caption">Енот 🦝<br><span class="warning-signs">Дезориентация, шаткая походка, агрессия</span></div>
-    </div>
-    <div class="animal-card">
-        <img src="images/dog.jpg" alt="Собака">
-        <div class="caption">Бродячая собака 🐕<br><span class="warning-signs">Обильное слюнотечение, агрессия или апатия</span></div>
-    </div>
-    <div class="animal-card">
-        <img src="images/cat.jpg" alt="Кошка">
-        <div class="caption">Кошка 🐈<br><span class="warning-signs">Необычное поведение, агрессия, слюнотечение</span></div>
-    </div>
-    <div class="animal-card">
-        <img src="images/bat.jpg" alt="Летучая мышь">
-        <div class="caption">Летучая мышь 🦇<br><span class="warning-signs">Дневная активность, падение на землю</span></div>
-    </div>
-    <div class="animal-card">
-        <img src="images/badger.jpg" alt="Барсук">
-        <div class="caption">Барсук 🦡<br><span class="warning-signs">Потеря страха, агрессия, слюнотечение</span></div>
-    </div>
-</div>  
- <p><strong>Как выглядят при бешенстве:</strong> необычное поведение (дикое животное выходит к людям, теряет страх), обильное слюноотделение, шаткая походка, агрессия без причины или, наоборот, неестественная апатия, паралич конечностей.</p>
+        <p>Заболевание могут переносить любые теплокровные животные. Чаще всего источником становятся:</p>
+        <div class="animals-grid">
+            <div class="animal-card">
+                <img src="images/fox.jpg" alt="Лиса">
+                <div class="caption">Лиса 🦊<br><span class="warning-signs">Слюнотечение, потеря страха, агрессия</span></div>
+            </div>
+            <div class="animal-card">
+                <img src="images/raccoon.jpg" alt="Енот">
+                <div class="caption">Енот 🦝<br><span class="warning-signs">Дезориентация, шаткая походка</span></div>
+            </div>
+            <div class="animal-card">
+                <img src="images/dog.jpg" alt="Собака">
+                <div class="caption">Бродячая собака 🐕<br><span class="warning-signs">Обильное слюнотечение, агрессия/апатия</span></div>
+            </div>
+            <div class="animal-card">
+                <img src="images/cat.jpg" alt="Кошка">
+                <div class="caption">Кошка 🐈<br><span class="warning-signs">Необычное поведение, слюнотечение</span></div>
+            </div>
+            <div class="animal-card">
+                <img src="images/bat.jpg" alt="Летучая мышь">
+                <div class="caption">Летучая мышь 🦇<br><span class="warning-signs">Дневная активность, падение на землю</span></div>
+            </div>
+            <div class="animal-card">
+                <img src="images/badger.jpg" alt="Барсук">
+                <div class="caption">Барсук 🦡<br><span class="warning-signs">Потеря страха, агрессия</span></div>
+            </div>
+        </div>
+        <p><strong>Признаки бешенства у животных:</strong> неестественное поведение (дикое животное выходит к людям), обильное слюноотделение, шаткая походка, агрессия или апатия, паралич.</p>
 
-        <!-- ЧТО ДЕЛАТЬ ПОСЛЕ УКУСА -->
+        <!-- Что делать сразу после укуса -->
         <div class="danger-box">
             <h3>⚠️ Что делать сразу после укуса или ослюнения</h3>
             <div class="step">
-                <span class="step-number">1</span> <strong>Немедленно промойте рану</strong> большим количеством воды с <span class="soap-highlight">хозяйственным мылом</span>. Мыло разрушает оболочку вируса. Промывайте не менее 10–15 минут под проточной водой.
+                <span class="step-number">1</span> <strong>Обильно промойте рану</strong> проточной водой с <span class="soap-highlight">хозяйственным мылом</span> не менее 10–15 минут. Мыло разрушает оболочку вируса.
             </div>
             <div class="step">
-                <span class="step-number">2</span> <strong>Обработайте края раны</strong> антисептиком (йод, зелёнка, перекись водорода). <span class="no-do"><strong>❌ Не прижигайте рану!</strong></span> Прижигание не убивает вирус, но усугубляет травму.
+                <span class="step-number">2</span> <strong>Обработайте края раны</strong> антисептиком (йод, зелёнка, перекись водорода). <span class="no-do">❌ Не прижигайте рану!</span> Это не убивает вирус и усугубляет травму.
             </div>
             <div class="step">
-                <span class="step-number">3</span> <strong>Не пытайтесь поймать животное самостоятельно</strong> — запишите его приметы и местонахождение для служб отлова.
+                <span class="step-number">3</span> <strong>Не пытайтесь поймать животное</strong> — запомните его приметы и местонахождение.
             </div>
             <div class="step">
-                <span class="step-number">4</span> <strong>После обработки — обязательно обратитесь в травмпункт</strong> или ближайшее медицинское учреждение. Врач оценит необходимость вакцинации. <em>Даже если рана кажется незначительной — вирус может проникнуть через микроповреждения.</em>
+                <span class="step-number">4</span> <strong>После обработки обязательно обратитесь в медицинское учреждение.</strong> Врач оценит необходимость вакцинации. Даже маленькая царапина опасна.
             </div>
             <div class="step">
-                <span class="step-number">5</span> <strong>Курс вакцинации</strong> современными препаратами — это несколько уколов (обычно 6) по схеме, назначенной врачом. Это единственный способ предотвратить бешенство после контакта.
+                <span class="step-number">5</span> <strong>Курс вакцинации</strong> — обычно 6 уколов по схеме. Это единственный способ предотвратить заболевание.
             </div>
         </div>
 
+        <!-- Что делать в Таганроге -->
+        <h2>📍 Что делать в Таганроге</h2>
+
+        <h3>🏥 Куда обращаться за помощью</h3>
+        <p>В Таганроге экстренную помощь при укусах оказывают в нескольких учреждениях. Ниже — актуальные адреса и контакты.</p>
+
+        <div class="clinic-card">
+            <div class="icon">🏥</div>
+            <div class="info">
+                <strong>ГБСМП (приёмный покой)</strong>
+                <p>📍 Большой проспект, 16</p>
+                <p>📞 8 (8634) 64-26-52</p>
+                <p>🚌 <strong>Как добраться:</strong> автобусы №2, 5, 5/7т, 11, 79; трамваи №5, 6. Остановка «БСМП» или «Травмпункт».</p>
+                <p><small>Круглосуточно. Оказывают экстренную хирургическую помощь, вводят вакцину от бешенства и столбняка.</small></p>
+            </div>
+        </div>
+
+        <div class="clinic-card">
+            <div class="icon">🏥</div>
+            <div class="info">
+                <strong>Городская поликлиника №1</strong>
+                <p>📍 ул. Пархоменко, 15А</p>
+                <p>📞 8 (8634) 33-17-17</p>
+                <p>🚌 <strong>Как добраться:</strong> маршрутки №50, 60 до ост. «Рынок Русское поле»; автобус и маршрутка №19 до ост. «Сергея Шило».</p>
+                <p><small>Приём в рабочие часы. Уточните расписание по телефону.</small></p>
+            </div>
+        </div>
+
+        <div class="clinic-card">
+            <div class="icon">🏥</div>
+            <div class="info">
+                <strong>Городская поликлиника №2</strong>
+                <p>📍 ул. П. Тольятти, 14</p>
+                <p>📞 8 (8634) 38-26-70</p>
+                <p>🚌 <strong>Как добраться:</strong> автобусы №31, 35, 36; маршрутки №31, 34, 36, 73, 74; троллейбусы №1, 2, 5 до ост. «Гостиница Таганрог».</p>
+            </div>
+        </div>
+
+        <div class="clinic-card">
+            <div class="icon">🏥</div>
+            <div class="info">
+                <strong>Детская городская больница</strong>
+                <p>📍 ул. Ломакина, 57</p>
+                <p>📞 8 (8634) 36-87-31</p>
+                <p>🚌 <strong>Как добраться:</strong> трамваи №1, 3 до ост. «Улица Ломакина»; автобусы №15, 19, 35, 77; маршрутки №15, 19, 34, 73Б до ост. «Детская больница».</p>
+                <p><small>Для детей — обращайтесь сюда.</small></p>
+            </div>
+        </div>
+
+        <!-- Карта -->
+        <h3>🗺️ Все адреса на карте</h3>
+        <div id="map" style="width: 100%; height: 420px;"></div>
+        <p style="font-size: 0.9em; color: #7f5539; margin-top: 10px;">Нажмите на метку, чтобы увидеть название учреждения.</p>
+
+        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        <script type="text/javascript">
+            ymaps.ready(function () {
+                var myMap = new ymaps.Map('map', {
+                    center: [47.215, 38.90],
+                    zoom: 13,
+                    controls: ['zoomControl', 'fullscreenControl']
+                });
+
+                var hospitals = [
+                    { coords: [47.2245, 38.8910], name: 'ГБСМП', desc: 'Большой проспект, 16' },
+                    { coords: [47.2367, 38.8967], name: 'Поликлиника №1', desc: 'ул. Пархоменко, 15А' },
+                    { coords: [47.2133, 38.9283], name: 'Поликлиника №2', desc: 'ул. П. Тольятти, 14' },
+                    { coords: [47.2008, 38.9088], name: 'Детская больница', desc: 'ул. Ломакина, 57' }
+                ];
+
+                hospitals.forEach(function (hospital) {
+                    var placemark = new ymaps.Placemark(hospital.coords, {
+                        balloonContent: '<strong>' + hospital.name + '</strong><br>' + hospital.desc,
+                        hintContent: hospital.name
+                    }, {
+                        preset: 'islands#blueMedicalCircleIcon',
+                        iconColor: '#e67e22'
+                    });
+                    myMap.geoObjects.add(placemark);
+                });
+            });
+        </script>
+
+        <!-- Столбняк – расширенный блок -->
+        <h3>💉 Не забудьте про столбняк!</h3>
+        <p>При любом укусе или ранении, помимо бешенства, существует риск заражения <strong>столбняком</strong>. Это острая инфекция, поражающая нервную систему и часто приводящая к смерти. Споры столбняка находятся в земле, пыли и грязи и могут попасть в рану.</p>
+        <div class="danger-box">
+            <p>Врач в травмпункте или приёмном покое обязательно оценит ваш прививочный статус:</p>
+            <ul>
+                <li>Если вы прививались от столбняка более 10 лет назад — вам введут вакцину (АС-анатоксин) или противостолбнячный иммуноглобулин.</li>
+                <li>Это делается прямо в день обращения.</li>
+            </ul>
+            <p>Не отказывайтесь от этой прививки — она спасает жизнь.</p>
+        </div>
+
+        <!-- Опасные места -->
+        <h3>⚠️ Где нужно быть осторожнее в Таганроге и окрестностях</h3>
+        <p>Скопления безнадзорных животных могут возникать в разных частях города, особенно на пустырях, стройках и в частном секторе.</p>
+
+        <h4>🏙️ В самом городе</h4>
+        <ul>
+            <li><strong>Улица Ломоносова, 95-97</strong> — рядом со школой-интернатом.</li>
+            <li><strong>Улицы Свободы, 100б; Жукова, 1а, 1д</strong> — зафиксированы случаи отлова.</li>
+            <li><strong>Николаевское шоссе и Мариупольское шоссе</strong> — места регулярного отлова.</li>
+            <li><strong>Улицы Кибальчича, Бабушкина, Чучева</strong> — адреса из отчётов МКУ «Благоустройство».</li>
+            <li><strong>Район Старого вокзала и улицы Петровской</strong> — традиционные маршруты перемещений.</li>
+        </ul>
+
+        <h4>🌳 Окрестности и пригород</h4>
+        <p>Посёлки Неклиновского района — <strong>Вареновка, Бессергеновка, Приморск, Поливановка, Рождественское</strong> и другие — зоны частной застройки. Здесь:</p>
+        <ul>
+            <li>Часто содержат собак на свободном выгуле.</li>
+            <li>Могут сбиваться стаи на границах с полями и лесополосами.</li>
+            <li>Дикие животные (лисицы, грызуны) могут выходить к людям, особенно в сумерках.</li>
+        </ul>
+        <p><strong>Любой частный сектор, окраины и прилегающие посёлки требуют повышенной внимательности.</strong></p>
+
         <div class="footer-note">
             <p>📞 <strong>Единый номер экстренных служб: 112</strong></p>
-            <p>🔬 Вакцинация после контакта эффективна, только если начата <strong>до появления симптомов</strong>. Не откладывайте визит к врачу.</p>
-            <p style="margin-top:15px;font-size:0.85em;">Информация носит ознакомительный характер. При любых подозрениях на бешенство — немедленно обращайтесь в медицинское учреждение.</p>
+            <p>📞 <strong>Отлов безнадзорных животных:</strong> 8 (8634) 43-14-06</p>
+            <p>🔬 Вакцинация после контакта эффективна только до появления симптомов. Не откладывайте визит к врачу.</p>
+            <p style="margin-top: 14px; font-size: 0.85em;">Информация носит ознакомительный характер. При любых подозрениях на бешенство немедленно обращайтесь в медицинское учреждение.</p>
         </div>
     </div>
 </body>
